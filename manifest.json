@@ -1,0 +1,24 @@
+{
+    "name": "genericizer",
+    "description": "Take very basic steps to reduce fingerprintability",
+    "version": "0.0.1",
+    "manifest_version": 2,
+    "options_ui": {
+        "page": "options.html",
+        "chrome_style": true
+    },
+    "content_scripts": [{
+        "run_at": "document_start",
+        "js": ["contentscript.js"],
+        "matches": ["<all_urls>"]
+    }],
+    "permissions": [
+        "<all_urls>",
+        "storage",
+        "webRequest",
+        "webRequestBlocking"
+    ],
+    "background": {
+        "scripts": ["background.js"]
+    }
+}
