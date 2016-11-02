@@ -5,19 +5,16 @@ __WORK IN PROGRESS__
 `genericizer` is a Chromium/Chrome extension meant to reduce the browser's
 fingerprintability.
 
-`genericizer` started out as a way to learn writing Chromium extensions. The
-idea was to cycle through common profiles (changing things that can be probed
-by the adversary), to avoid being tracked. Unfortunately, even basic research
-revealed that to be a pretty hopeless undertaking. The fingerprinting surface
-is enormous, the amount of effort needed to mitigate even the most obvious
-vectors large and the extension APIs too limited to assume they would suffice
-in the long run. Additionally, for any mitigation implemented, the likelihood
-of it actually increasing fingerprintability is considerable.
+The initial idea was to cycle through common profiles (changing things that can
+be probed), to avoid tracking. Unfortunately, with some research, it turned
+out to be a pretty hopeless undertaking. The fingerprinting surface is
+enormous, the amount of effort needed to deal with even the most obvious
+vectors large and the extension APIs too limited to suffice in the long run.
+Additionally, for any mitigation implemented, the risk of it actually
+increasing fingerprintability is considerable.
 
 **For now, `genericizer` is most useful as a template to start working on an
-extension** that uses background scripts, content scripts and chrome.storage,
-which is what you need if you want to mess with headers, the navigator object
-and store user settings.
+extension** that uses background scripts, content scripts and chrome.storage.
 
 # What does it do ?
 
@@ -33,7 +30,7 @@ For now, `genericizer`:
   navigator.userAgent (except the "Mozilla/" prefix). Something the most common
   user agent switchers fail to do.
 * Clears navigator.plugins and navigator.mimeTypes (which leak quite a bit of
-  information), while retaining their type to avoid being obvious about it.
+  information), while retaining their type to avoid being obvious.
 * Sets navigator.language and navigator.languages to 'en-US' only, which seems
   to be the most common.
 
@@ -41,8 +38,8 @@ For now, `genericizer`:
 
 The best option is to use [Tor
 Browser](https://www.torproject.org/projects/torbrowser.html.en). Nothing else
-comes even close. No combination of plugins with any browser will give you the
-sort of protection, that the [Tor Browser
+comes even close. No combination of plugins with any browser gives the sort of
+protection, that the [Tor Browser
 will](https://www.torproject.org/projects/torbrowser/design/).
 
 The more paranoid can combine its use with a [Tails](https://tails.boum.org/)
@@ -50,12 +47,12 @@ livecd and/or a [VPN](https://torrentfreak.com/vpn-anonymous-review-160220/),
 with some [IP leak mitigation](https://github.com/wknapik/vpnfailsafe) in
 place.
 
-If you don't want to use Tor Browser for your daily browsing, you can improve
-your security and privacy through a combination of configuration and plugins.
-Using these has a mixed effect. On one hand, any customizations/extensions,
-anything that deviates from the common average, exposes uniquely identifying
-information about the browser, but on the other hand, the active blocking of
-tracking attempts will yield results of its own.
+Those who don't want to use Tor Browser for daily browsing, can improve their
+security and privacy through a combination of configuration and plugins.  Using
+these has a mixed effect. On one hand, any customizations/extensions, anything
+that deviates from the common average, exposes uniquely identifying information
+about the browser, but on the other hand, the active blocking of tracking
+attempts will yield results of its own.
 
 For Chromium/Chrome users, I'd suggest:
 * Configuration (not comprehensive):
