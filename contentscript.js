@@ -1,8 +1,20 @@
 'use strict';
 
-var actualCode = function() {
-    'use strict';
+var scr = document.createElement('script');
+scr.src = chrome.extension.getURL('window.js');
+scr.onload = function() { scr.remove(); };
+(document.head || document.documentElement).appendChild(scr);
 
+chrome.storage.local.get('userAgent', function(items) {
+    var props = getNewNavigatorProps(items.userAgent);
+    setTimeout(function() {
+        document.dispatchEvent(new CustomEvent('modifyNavigator', {
+            detail: { props: props }
+        }));
+    }, 0);
+});
+
+var getNewNavigatorProps = function(userAgent) {
     var plugins = { length: 0 };
     Object.setPrototypeOf(plugins, Object.getPrototypeOf(navigator.plugins));
     var mimeTypes = { length: 0 };
@@ -27,12 +39,5 @@ var actualCode = function() {
         return acc;
     }, {});
 
-    Object.defineProperties(navigator, props);
+    return props;
 };
-
-chrome.storage.local.get('userAgent', function(items) { 
-    var code = 'var userAgent = "' + items.userAgent + '"; (' + actualCode + ')();';
-    document.documentElement.setAttribute('onreset', code);
-    document.documentElement.dispatchEvent(new CustomEvent('reset'));
-    document.documentElement.removeAttribute('onreset');
-});

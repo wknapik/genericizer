@@ -1,3 +1,5 @@
+__WORK IN PROGRESS__
+
 # What is genericizer ?
 
 `genericizer` is a Chromium/Chrome extension meant to reduce the browser's

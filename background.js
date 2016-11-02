@@ -18,7 +18,7 @@ var setUserAgent = function(userAgent) {
         chrome.webRequest.onBeforeSendHeaders.removeListener(currentListener);
     chrome.webRequest.onBeforeSendHeaders.addListener(listener, { urls: ['<all_urls>'] }, ['blocking', 'requestHeaders']);
     currentListener = listener;
-}
+};
 
 chrome.storage.local.get('userAgent', function(items) {
     if (items.userAgent && items.userAgent.length > 0)

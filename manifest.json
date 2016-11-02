@@ -3,6 +3,9 @@
     "description": "Take very basic steps to reduce fingerprintability",
     "version": "0.0.1",
     "manifest_version": 2,
+    "web_accessible_resources": [
+        "window.js"
+    ],
     "options_ui": {
         "page": "options.html",
         "chrome_style": true
