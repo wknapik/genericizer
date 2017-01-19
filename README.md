@@ -1,4 +1,4 @@
-__ABANDONED__
+__ABANDONED PROJECT, MOVE ALONG__
 
 # What is genericizer ?
 
