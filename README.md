@@ -1,4 +1,4 @@
-__WORK IN PROGRESS__
+__ABANDONED__
 
 # What is genericizer ?
 
